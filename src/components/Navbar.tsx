@@ -36,7 +36,7 @@ export default function Navbar() {
             alt="Arcus Aero — Fueling Futures Above the Clouds"
             width={240}
             height={80}
-            className="h-12 md:h-16 w-auto object-contain"
+            className="h-9 md:h-16 w-auto object-contain"
             priority
           />
         </Link>
@@ -62,37 +62,64 @@ export default function Navbar() {
 
         {/* Mobile Nav Toggle */}
         <button
-          className="md:hidden text-primary-dark"
+          className={`md:hidden p-2 rounded-full transition-all duration-300 ${isScrolled ? 'text-primary-dark bg-black/5' : 'text-white bg-white/20 backdrop-blur-md border border-white/30'}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={22} strokeWidth={2} /> : <Menu size={22} strokeWidth={2} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — Full-width premium dark overlay */}
       {mobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="md:hidden absolute top-20 left-4 right-4 bg-white/90 backdrop-blur-3xl rounded-3xl p-6 flex flex-col gap-6 shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-white"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="md:hidden absolute top-0 left-0 right-0 min-h-screen bg-aviation-navy/95 backdrop-blur-3xl flex flex-col px-6 pt-28 pb-12 gap-2 z-[-1]"
         >
-          {navLinks.map((link) => (
-            <Link
+          {/* Close button at top */}
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="absolute top-5 right-5 p-2.5 rounded-full bg-white/10 text-white border border-white/20"
+          >
+            <X size={20} />
+          </button>
+
+          {navLinks.map((link, i) => (
+            <motion.div
               key={link.name}
-              href={link.href}
-              className="text-lg font-medium text-primary-dark border-b border-black/5 pb-2"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.07 }}
+            >
+              <Link
+                href={link.href}
+                className="flex items-center justify-between py-5 border-b border-white/10 text-white text-2xl font-heading font-semibold tracking-tight hover:text-neon-violet transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.name}
+                <span className="text-white/30 text-lg">→</span>
+              </Link>
+            </motion.div>
+          ))}
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="mt-8"
+          >
+            <Link
+              href="#enroll"
+              className="w-full block text-center px-6 py-5 rounded-2xl bg-gradient-to-r from-royal-purple to-neon-violet text-white text-lg font-bold shadow-lg shadow-neon-violet/30 tracking-wide"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {link.name}
+              Apply Now
             </Link>
-          ))}
-          <Link
-            href="#enroll"
-            className="w-full text-center px-6 py-4 rounded-xl bg-primary-dark text-white font-semibold shadow-md mt-4"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Apply Now
-          </Link>
+          </motion.div>
+
+          <p className="text-white/20 text-xs text-center mt-auto pt-8 tracking-widest uppercase">Fueling Futures Above the Clouds</p>
         </motion.div>
       )}
     </motion.header>
