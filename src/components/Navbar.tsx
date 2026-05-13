@@ -29,18 +29,16 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500`}
     >
-      <div className={`w-full max-w-5xl flex justify-between items-center px-3 py-2 md:px-6 md:py-3 rounded-full transition-all duration-500 ${isScrolled ? 'luxury-glass' : 'bg-white/10 md:bg-transparent backdrop-blur-md md:backdrop-blur-none'}`}>
+      <div className={`w-full max-w-5xl flex justify-between items-center px-6 py-3 rounded-full transition-all duration-500 ${isScrolled ? 'luxury-glass' : 'bg-transparent'}`}>
         <Link href="/" className="flex items-center group">
-          <div className="bg-white rounded-xl px-2 py-1 md:bg-transparent md:p-0 shadow-md md:shadow-none">
-            <Image
-              src="/images/logo.png"
-              alt="Arcus Aero — Fueling Futures Above the Clouds"
-              width={240}
-              height={80}
-              className="h-10 md:h-16 w-auto object-contain"
-              priority
-            />
-          </div>
+          <Image
+            src="/images/logo.png"
+            alt="Arcus Aero — Fueling Futures Above the Clouds"
+            width={240}
+            height={80}
+            className="h-12 md:h-16 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
