@@ -75,7 +75,7 @@ export default function Hero() {
           transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="relative mb-8"
         >
-          <h1 className="font-heading text-5xl md:text-6xl lg:text-[6rem] font-bold leading-[0.9] tracking-tighter text-primary-dark">
+          <h1 className="font-heading text-[3.2rem] leading-[1] md:text-6xl lg:text-[6rem] font-bold tracking-tighter text-primary-dark">
             Master the skies. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-violet via-royal-purple to-neon-violet font-light italic pr-4">Lead the future.</span>
           </h1>
@@ -90,17 +90,19 @@ export default function Hero() {
           transition={{ duration: 1, delay: 1 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
-          <button className="group relative px-8 py-3.5 rounded-full overflow-hidden transition-all duration-500">
+          {/* Primary CTA */}
+          <button className="group relative w-full sm:w-auto px-8 py-4 rounded-full overflow-hidden transition-all duration-500">
             <div className="absolute inset-0 bg-gradient-to-r from-royal-purple to-neon-violet transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <span className="relative z-10 text-white font-semibold text-base tracking-wider flex items-center gap-2">
-              Explore Curriculum 
+            <span className="relative z-10 text-white font-bold text-lg tracking-wider flex items-center justify-center gap-3">
+              Explore Curriculum
               <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>→</motion.span>
             </span>
             <div className="absolute inset-x-0 bottom-0 h-1 bg-white/20 blur-sm" />
           </button>
           
-          <button className="px-8 py-3.5 rounded-full bg-white/10 backdrop-blur-2xl border border-white/20 text-primary-dark font-semibold text-base hover:bg-white/20 hover:border-white/40 transition-all duration-300 shadow-xl">
+          {/* Secondary CTA */}
+          <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/15 backdrop-blur-2xl border border-white/30 text-white font-semibold text-lg hover:bg-white/25 transition-all duration-300 shadow-xl">
             Discover Arcus
           </button>
         </motion.div>
@@ -115,11 +117,11 @@ export default function Hero() {
           {metrics.map((metric, i) => (
             <motion.div
               key={i}
-              whileHover={{ y: -10, backgroundColor: "rgba(255, 255, 255, 0.9)" }}
-              className="bg-white/70 backdrop-blur-2xl p-3 md:p-6 rounded-2xl border border-white/60 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center transition-all duration-500"
+              whileHover={{ y: -10, backgroundColor: "rgba(255, 255, 255, 0.95)" }}
+              className="bg-white/80 backdrop-blur-2xl py-5 px-3 md:p-6 rounded-2xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center justify-center transition-all duration-500"
             >
-              <div className="text-3xl md:text-3xl font-heading font-bold text-primary-dark mb-1">{metric.value}</div>
-              <div className="text-[10px] md:text-[10px] font-bold uppercase tracking-[0.15em] text-royal-purple/70 text-center leading-tight">{metric.label}</div>
+              <div className="text-[2rem] md:text-3xl font-heading font-extrabold text-primary-dark mb-1 leading-none">{metric.value}</div>
+              <div className="text-[11px] md:text-[10px] font-bold uppercase tracking-[0.15em] text-royal-purple/80 text-center leading-tight mt-1">{metric.label}</div>
             </motion.div>
           ))}
         </motion.div>
