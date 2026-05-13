@@ -14,8 +14,13 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Arcus Aero | Kerala's First Online DGCA Pilot Ground School",
+  title: "Arcus Aero | Kerala's Premier Online DGCA Pilot Ground School",
   description: "High-quality DGCA ground training accessible to aspiring pilots across India. Join Arcus Aero for a premium aviation education experience.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
